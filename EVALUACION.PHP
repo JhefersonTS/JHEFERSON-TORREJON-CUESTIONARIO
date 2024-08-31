@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora de Compra</title>
+    <title>Desarrolla un script en PHP para calcular el costo total de una compra en una tienda en línea.</title>
 </head>
 <body>
-    <h1>Calculadora de Compra</h1>
+    <h1>Calcular el costo total de una compra en una tienda en línea</h1>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Leer datos del formulario
+        // Obtener los datos del formulario
         $p1 = (float) $_POST['precio1'];
         $c1 = (int) $_POST['cantidad1'];
         $p2 = (float) $_POST['precio2'];
@@ -17,20 +17,20 @@
         $p3 = (float) $_POST['precio3'];
         $c3 = (int) $_POST['cantidad3'];
 
-        // Calcular subtotal
+        // Calcular el subtotal
         $subtotal = $p1 * $c1 + $p2 * $c2 + $p3 * $c3;
 
-        // Calcular impuestos y descuentos
+        // Calcular impuestos, descuento y total final
         $impuestos = $subtotal * 0.15;
         $descuento = $subtotal * 0.10;
         $totalFinal = $subtotal + $impuestos - $descuento;
 
         // Mostrar resultados
         echo "<h2>Resultados</h2>";
-        echo "Subtotal: S/ " . number_format($subtotal, 2) . "<br>";
-        echo "Impuestos: S/ " . number_format($impuestos, 2) . "<br>";
-        echo "Descuento: S/ " . number_format($descuento, 2) . "<br>";
-        echo "Total final: S/ " . number_format($totalFinal, 2);
+        echo "Subtotal de la Compra: S/ " . round($subtotal, 2) . "<br>";
+        echo "Monto de Impuestos: S/ " . round($impuestos, 2) . "<br>";
+        echo "Descuento Aplicado: S/ " . round($descuento, 2) . "<br>";
+        echo "Total final de la compra: S/ " . round($totalFinal, 2);
     }
     ?>
 
@@ -48,3 +48,4 @@
     </form>
 </body>
 </html>
+
